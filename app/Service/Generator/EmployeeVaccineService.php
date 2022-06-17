@@ -63,12 +63,18 @@ class EmployeeVaccineService extends CoreService
             'dosis' => null,
             'tanggal_vaksin' => null
         ];
-//        dd($arrData);
-
-
-
-        $employeeVaccine = $this->employeevaccineRepository->save($arrData, false, true);
-
-
+        //2 dosis vaccine for every employee data
+        for ($i=0; $i <= 1; $i ++)
+        {
+            $ep = $this->employeevaccineRepository->save(
+               [
+                    'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+                    'pegawai_id' => $employee->id,
+                    'vaksin_id' => null,
+                    'dosis' => null,
+                    'tanggal_vaksin' => null
+               ], false, true);
+//            dump($ep);
+        }
     }
 }

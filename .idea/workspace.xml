@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52080c4d-a1c8-4647-b469-71681eedf524" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeFamilyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeFamilyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeFamilyVaccineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeFamilyVaccineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeVaccineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeVaccineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Generator/EmployeeFamily.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Generator/EmployeeFamily.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Generator/EmployeeVaccine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Generator/EmployeeVaccine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Generator/EmployeeVaccineRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Generator/EmployeeVaccineRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Service/Generator/EmployeeVaccineService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/Generator/EmployeeVaccineService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contents/employeefamily/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contents/employeefamily/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contents/employeevaccine/_modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contents/employeevaccine/_modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contents/employeevaccine/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contents/employeevaccine/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +182,7 @@
       <updated>1655433997761</updated>
       <workItem from="1655433999965" duration="16397000" />
       <workItem from="1655463854154" duration="155000" />
-      <workItem from="1655464016204" duration="6791000" />
+      <workItem from="1655464016204" duration="7482000" />
     </task>
     <servers />
   </component>
