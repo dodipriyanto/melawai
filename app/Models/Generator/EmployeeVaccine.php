@@ -29,4 +29,15 @@ class EmployeeVaccine extends Model
         'tanggal_vaksin', 
         
     ];
+
+    function employee()
+    {
+        return $this->belongsTo(Employee::class,'pegawai_id','id');
+    }
+
+    function vaccine()
+    {
+        return $this->hasOne(Vaccine::class, 'id','vaksin_id');
+    }
+
 }

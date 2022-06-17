@@ -14,18 +14,18 @@
                 <input type="hidden" name="id" id="id" class="id">
 
                 <fieldset class='form-group floating-label-form-group'>
-                    <label for='pegawai_id'>Pegawai_id</label>
+                    <label for='pegawai_id'>Pegawai</label>
                     <div class='controls'>
                         <input type='text' class='form-control' id='pegawai_id' name='pegawai_id'
-                               placeholder='Pegawai_id' required
+                               placeholder='Pegawai' required
                                data-validation-required-message='This field is required'>
                     </div>
                 </fieldset>
                  <fieldset class='form-group floating-label-form-group'>
-                    <label for='vaksin_id'>Vaksin_id</label>
+                    <label for='vaksin_id'>Vaksin</label>
                     <div class='controls'>
                         <input type='text' class='form-control' id='vaksin_id' name='vaksin_id'
-                               placeholder='Vaksin_id' required
+                               placeholder='Vaksin' required
                                data-validation-required-message='This field is required'>
                     </div>
                 </fieldset>
@@ -38,10 +38,10 @@
                     </div>
                 </fieldset>
                  <fieldset class='form-group floating-label-form-group'>
-                    <label for='tanggal_vaksin'>Tanggal_vaksin</label>
+                    <label for='tanggal_vaksin'>Tanggal Vaksin</label>
                     <div class='controls'>
                         <input type='text' class='form-control' id='tanggal_vaksin' name='tanggal_vaksin'
-                               placeholder='Tanggal_vaksin' required
+                               placeholder='Tanggal Vaksin' required
                                data-validation-required-message='This field is required'>
                     </div>
                 </fieldset>

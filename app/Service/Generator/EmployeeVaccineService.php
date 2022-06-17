@@ -50,7 +50,7 @@ class EmployeeVaccineService extends CoreService
     }
 
     public function loadDataTable($access){
-        $model = EmployeeVaccine::withoutTrashed()->get();
+        $model = EmployeeVaccine::withoutTrashed()->with('employee')->get();
         return $this->privilageBtnDatatable($model, $access);
     }
 

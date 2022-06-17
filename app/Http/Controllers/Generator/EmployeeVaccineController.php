@@ -82,7 +82,7 @@ class EmployeeVaccineController extends CoreController
     public function get(Request $request)
     {
         $id = $request->get('id');
-        $data = $this->employeevaccineRepository->find($id);
+        $data = $this->employeevaccineRepository->findWith($id,'employee');
 
         return response()->json(['data'=> $data ],200);
     }

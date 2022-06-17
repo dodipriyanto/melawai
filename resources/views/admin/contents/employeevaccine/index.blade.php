@@ -32,11 +32,10 @@
                                        <thead>
                                        <tr class="table100-head">
                                            <th width="3%" class="text-center">No</th>
-                                           <th>Pegawai_id</th>
-                                           <th>Vaksin_id</th>
-                                           <th>Dosis</th>
-                                           <th>Tanggal_vaksin</th>
-                                           
+                                           <th>Pegawai</th>
+                                           <th>Vaksin</th>
+                                           <th>Dosis Ke</th>
+                                           <th>Tanggal Vaksin</th>
                                            <th class="text-center">Action</th>
                                        </tr>
                                        </thead>
@@ -76,8 +75,19 @@
                 ajax: url.table,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', title: '#', width: '2%'},
-                    {data: 'pegawai_id', name: 'pegawai_id'},
-                    {data: 'vaksin_id', name: 'vaksin_id'},
+
+                    {
+                        data: 'employee', name: 'employee',
+                        "render": function (data) {
+                            return `<div class="badge ">(${data.nik}) - ${data.nama}</div>`;
+                        }
+                    },
+                    {
+                        data: 'vaccine', name: 'vaccine',
+                        "render": function (data) {
+                            return (data != null ? `<div class="badge badge-success">${data.name}</div>` : `<div class="badge badge-danger">BELUM</div>`)
+                        }
+                    },
                     {data: 'dosis', name: 'dosis'},
                     {data: 'tanggal_vaksin', name: 'tanggal_vaksin'},
                     
@@ -93,7 +103,8 @@
                 $.get(url.detail, {id : id}, function (result){
 
                     let response = result.data;
-                    $('#pegawai_id').val(response.pegawai_id)
+                    console.log(response);
+                    $('#pegawai_id').val(`(${response.employee.nik}) - ` + `${response.employee.nama}`)
                     $('#vaksin_id').val(response.vaksin_id)
                     $('#dosis').val(response.dosis)
                     $('#tanggal_vaksin').val(response.tanggal_vaksin)
@@ -111,8 +122,9 @@
 
                 $.get(url.detail,{id : id}, function (result){
                     let response = result.data;
+                    console.log(response)
                     $('#id').val(response.id)
-                    $('#pegawai_id').val(response.pegawai_id)
+                    $('#pegawai_id').val(`(${response.employee.nik}) - ` + `${response.employee.nama}`)
                     $('#vaksin_id').val(response.vaksin_id)
                     $('#dosis').val(response.dosis)
                     $('#tanggal_vaksin').val(response.tanggal_vaksin)
