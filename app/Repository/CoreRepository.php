@@ -45,8 +45,15 @@ class CoreRepository
         return $this->model->withoutTrashed()->get();
     }
 
-    public function save(array $data, $callback = null)
+    public function save(array $data, $callback = null, $isHaveId = false)
     {
+
+        //create new with dedicated id
+        if ($isHaveId == true)
+        {
+            return $this->model->create($data);
+        }
+
         $id = $data['id'];
         if ($id) {
             $record = $this->find($id);

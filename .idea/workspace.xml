@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52080c4d-a1c8-4647-b469-71681eedf524" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Models/Generator/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Generator/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Generator/EmployeeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Generator/EmployeeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Service/Generator/EmployeeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/Generator/EmployeeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/contents/employee/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/contents/employee/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Generator/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/CoreRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/CoreRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service/Generator/EmployeeVaccineService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/Generator/EmployeeVaccineService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_06_17_000000_create_employeevaccines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_06_17_000000_create_employeevaccines_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655433997761</updated>
-      <workItem from="1655433999965" duration="12442000" />
+      <workItem from="1655433999965" duration="15358000" />
     </task>
     <servers />
   </component>

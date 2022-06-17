@@ -53,4 +53,22 @@ class EmployeeVaccineService extends CoreService
         $model = EmployeeVaccine::withoutTrashed()->get();
         return $this->privilageBtnDatatable($model, $access);
     }
+
+    public function saveEmployeVaccine($employee)
+    {
+        $arrData = [
+            'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+            'pegawai_id' => $employee->id,
+            'vaksin_id' => null,
+            'dosis' => null,
+            'tanggal_vaksin' => null
+        ];
+//        dd($arrData);
+
+
+
+        $employeeVaccine = $this->employeevaccineRepository->save($arrData, false, true);
+
+
+    }
 }

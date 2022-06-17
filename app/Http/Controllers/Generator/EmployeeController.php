@@ -6,6 +6,7 @@
 namespace App\Http\Controllers\Generator;
 
 use App\Models\Generator\Employee;
+use App\Service\Generator\EmployeeVaccineService;
 use App\Service\UploadHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,12 +23,15 @@ class EmployeeController extends CoreController
     private $settingVal;
     protected $employeeRepository;
     protected $employeeService;
+    protected $employeeVaccineService;
 
-    public function __construct(EmployeeRepository $employeeRepository, EmployeeService $employeeService)
+    public function __construct(EmployeeRepository $employeeRepository, EmployeeService $employeeService,
+                                EmployeeVaccineService $employeeVaccineService)
     {
         $this->menu = $this->get_menu();
         $this->employeeRepository = $employeeRepository;
         $this->employeeService = $employeeService;
+        $this->employeeVaccineService = $employeeVaccineService;
         $this->settingVal = $this->get_all_setting();
     }
 
@@ -63,11 +67,20 @@ class EmployeeController extends CoreController
         }
 
         $input['file_upload'] = $file_upload;
-        $news = $this->employeeRepository->save($input);
+        $employee = $this->employeeRepository->save($input);
+
+        //if new employee , not update data
+        if (is_object($employee))
+        {
+            //Store Data Employee to Employee Vaccine
+            $this->employeeVaccineService->saveEmployeVaccine($employee);
+
+        }
+
 
         return response()->json([
             'status'=> 'success',
-            'message' => "Data is successfully  " . (is_object($news) == true ? 'added' : 'updated')
+            'message' => "Data is successfully  " . (is_object($employee) == true ? 'added' : 'updated')
         ],200);
     }
 

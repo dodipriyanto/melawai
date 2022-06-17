@@ -21,9 +21,9 @@ class CreateEmployeeVaccinesTable extends Migration
                 $table->primary('id');
 
                 $table->string("pegawai_id");
-                $table->string("vaksin_id");
-                $table->integer("dosis");
-                $table->date("tanggal_vaksin");
+                $table->string("vaksin_id")->nullable();
+                $table->integer("dosis")->nullable();
+                $table->date("tanggal_vaksin")->nullable();
                 
 
                 $table->softDeletes();
