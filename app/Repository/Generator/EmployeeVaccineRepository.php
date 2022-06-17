@@ -21,7 +21,9 @@ class EmployeeVaccineRepository extends CoreRepository
 
     public function findWith($id, $relation)
     {
-        return $this->employeevaccine->with("$relation")->find($id);
+//        dd(array_values($relation));
+        return $this->employeevaccine->with(array_values($relation))->find($id);
+
     }
 
     public function get_all(){

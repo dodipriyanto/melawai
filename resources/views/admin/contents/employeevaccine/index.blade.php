@@ -5,6 +5,7 @@
 @section('title', 'EmployeeVaccine')
 
 @section('stylesheet')
+    <link rel="stylesheet" type="text/css" href="{{asset('lib/flatpickr/css/flatpickr.min.css')}}">
 
 @endsection
 
@@ -56,6 +57,7 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('lib/flatpickr/js/flatpickr.js')}}"></script>
 
     <script type="text/javascript">
         var url = {
@@ -69,6 +71,8 @@
 
         $(document).ready(function () {
             var CSRF_TOKEN = "{{@csrf_token()}}";
+            $(".dpicker").flatpickr({enableTime: false, dateFormat: "Y-m-d"});
+
             table = $('#contentTable').DataTable({
                 processing: true,
                 serverSide: true,
@@ -85,7 +89,14 @@
                     {
                         data: 'vaccine', name: 'vaccine',
                         "render": function (data) {
-                            return (data != null ? `<div class="badge badge-success">${data.name}</div>` : `<div class="badge badge-danger">BELUM</div>`)
+                            // console.log(data)
+                            if(data)
+                            {
+                                return `<div class="badge ">${data.nama}</div>`;
+                            }else{
+                                return `<div class="badge ">-</div>`;
+
+                            }
                         }
                     },
                     {data: 'dosis', name: 'dosis'},
@@ -104,8 +115,11 @@
 
                     let response = result.data;
                     console.log(response);
-                    $('#pegawai_id').val(`(${response.employee.nik}) - ` + `${response.employee.nama}`)
-                    $('#vaksin_id').val(response.vaksin_id)
+                    $('#pegawai').val(response.employee.id).trigger('change')
+                    if(response.vaccine)
+                    {
+                        $('#vaksin').val(response.vaccine.id).trigger('change')
+                    }
                     $('#dosis').val(response.dosis)
                     $('#tanggal_vaksin').val(response.tanggal_vaksin)
                     
@@ -124,8 +138,12 @@
                     let response = result.data;
                     console.log(response)
                     $('#id').val(response.id)
-                    $('#pegawai_id').val(`(${response.employee.nik}) - ` + `${response.employee.nama}`)
-                    $('#vaksin_id').val(response.vaksin_id)
+                    $('#pegawai').val(response.employee.id).trigger('change')
+                    if(response.vaccine)
+                    {
+                        $('#vaksin').val(response.vaccine.id).trigger('change')
+                    }
+
                     $('#dosis').val(response.dosis)
                     $('#tanggal_vaksin').val(response.tanggal_vaksin)
                     

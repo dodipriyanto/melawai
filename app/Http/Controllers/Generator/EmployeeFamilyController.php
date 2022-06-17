@@ -101,7 +101,7 @@ class EmployeeFamilyController extends CoreController
     public function get(Request $request)
     {
         $id = $request->get('id');
-        $data = $this->employeefamilyRepository->find($id);
+        $data = $this->employeefamilyRepository->find($id, 'employee');
 
         return response()->json(['data'=> $data ],200);
     }

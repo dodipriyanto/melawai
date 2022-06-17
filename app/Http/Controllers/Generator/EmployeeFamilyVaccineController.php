@@ -13,6 +13,7 @@ use App\Http\Controllers\CoreController;
 
 use App\Repository\Generator\EmployeeFamilyVaccineRepository;
 use App\Service\Generator\EmployeeFamilyVaccineService;
+use App\Service\Generator\VaccineService;
 
 
 class EmployeeFamilyVaccineController extends CoreController
@@ -21,12 +22,15 @@ class EmployeeFamilyVaccineController extends CoreController
     private $settingVal;
     protected $employeefamilyvaccineRepository;
     protected $employeefamilyvaccineService;
+    protected $vaccineService;
 
-    public function __construct(EmployeeFamilyVaccineRepository $employeefamilyvaccineRepository, EmployeeFamilyVaccineService $employeefamilyvaccineService)
+    public function __construct(EmployeeFamilyVaccineRepository $employeefamilyvaccineRepository, EmployeeFamilyVaccineService $employeefamilyvaccineService,
+    VaccineService $vaccineService)
     {
         $this->menu = $this->get_menu();
         $this->employeefamilyvaccineRepository = $employeefamilyvaccineRepository;
         $this->employeefamilyvaccineService = $employeefamilyvaccineService;
+        $this->vaccineService = $vaccineService;
         $this->settingVal = $this->get_all_setting();
     }
 
@@ -38,7 +42,9 @@ class EmployeeFamilyVaccineController extends CoreController
      */
     public function index()
     {
+//        dd($this->vaccineService->all());
         return view('admin.contents.employeefamilyvaccine.index',[
+            'vaccine' => $this->vaccineService->all(),
             'menu' => ($this->menu ? $this->menu : ''),
             'setting' => ( $this->settingVal ? $this->settingVal : '')
         ]);

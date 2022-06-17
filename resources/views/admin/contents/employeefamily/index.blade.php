@@ -111,7 +111,7 @@
 
                     let response = result.data;
                     $('#pegawai').val(response.employee.id).trigger('change')
-                    $('#status_keluarga').val(response.status_keluarga)
+                    $('#status_keluarga').val(response.status_keluarga).trigger('change')
                     $('#nama').val(response.nama)
                     $('#umur').val(response.umur)
                     $('#tempat_lahir').val(response.tempat_lahir)
@@ -131,11 +131,12 @@
 
                 $.get(url.detail,{id : id}, function (result){
                     let response = result.data;
+
+                    console.log(response);
                     $('#id').val(response.id)
-                    $('#type').val(response.type).trigger('change')
 
                     $('#pegawai').val(response.employee.id).trigger('change')
-                    $('#status_keluarga').val(response.status_keluarga)
+                    $('#status_keluarga').val(response.status_keluarga).trigger('change')
                     $('#nama').val(response.nama)
                     $('#umur').val(response.umur)
                     $('#tempat_lahir').val(response.tempat_lahir)

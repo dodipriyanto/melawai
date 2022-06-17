@@ -13,6 +13,9 @@ use App\Http\Controllers\CoreController;
 
 use App\Repository\Generator\EmployeeVaccineRepository;
 use App\Service\Generator\EmployeeVaccineService;
+use App\Service\Generator\VaccineService;
+use App\Service\Generator\EmployeeService;
+
 
 
 class EmployeeVaccineController extends CoreController
@@ -21,12 +24,17 @@ class EmployeeVaccineController extends CoreController
     private $settingVal;
     protected $employeevaccineRepository;
     protected $employeevaccineService;
+    protected $vaccineService;
+    protected $employeeService;
 
-    public function __construct(EmployeeVaccineRepository $employeevaccineRepository, EmployeeVaccineService $employeevaccineService)
+    public function __construct(EmployeeVaccineRepository $employeevaccineRepository, EmployeeVaccineService $employeevaccineService,
+                                VaccineService $vaccineService, EmployeeService $employeeService)
     {
         $this->menu = $this->get_menu();
         $this->employeevaccineRepository = $employeevaccineRepository;
         $this->employeevaccineService = $employeevaccineService;
+        $this->vaccineService = $vaccineService;
+        $this->employeeService = $employeeService;
         $this->settingVal = $this->get_all_setting();
     }
 
@@ -39,6 +47,8 @@ class EmployeeVaccineController extends CoreController
     public function index()
     {
         return view('admin.contents.employeevaccine.index',[
+            'employee' => $this->employeeService->all(),
+            'vaccine' => $this->vaccineService->all(),
             'menu' => ($this->menu ? $this->menu : ''),
             'setting' => ( $this->settingVal ? $this->settingVal : '')
         ]);
@@ -82,7 +92,7 @@ class EmployeeVaccineController extends CoreController
     public function get(Request $request)
     {
         $id = $request->get('id');
-        $data = $this->employeevaccineRepository->findWith($id,'employee');
+        $data = $this->employeevaccineRepository->findWith($id,['employee','vaccine']);
 
         return response()->json(['data'=> $data ],200);
     }

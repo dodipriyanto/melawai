@@ -37,7 +37,8 @@ class EmployeeVaccine extends Model
 
     function vaccine()
     {
-        return $this->hasOne(Vaccine::class, 'id','vaksin_id');
+        return $this->belongsTo(Vaccine::class,'vaksin_id','id');
+
     }
 
 }

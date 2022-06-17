@@ -33,7 +33,7 @@ class EmployeeFamily extends Model
         
     ];
 
-    function Employee()
+    function employee()
     {
         return $this->belongsTo(Employee::class,'pegawai_id','id');
     }
