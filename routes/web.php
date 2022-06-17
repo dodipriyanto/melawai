@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Generator\EmployeeController;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupConttroller;
@@ -32,6 +33,14 @@ Route::group(['prefix'=>'administrator','middleware'=>['auth','roles']], functio
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/delete_file', [DashboardController::class, 'deleteFileContent'])->name('file_delete');
 
+
+    Route::group(['prefix'=>'employees'], function () {
+        Route::get('/', [EmployeeController::class, 'index'])->name('dashboard_employees');
+        Route::get('/get', [EmployeeController::class, 'get'])->name('dashboard_employees_detail');
+        Route::get('/delete', [EmployeeController::class, 'destroy'])->name('dashboard_employees_delete');
+        Route::post('/', [EmployeeController::class, 'store'])->name('dashboard_employees_post');
+        Route::get('/datatable.json', [EmployeeController::class ,'__datatable'])->name('dashboard_employees_table');
+    });
 
     Route::group(['prefix'=>'todos'], function () {
         Route::get('/', [TodoController::class, 'index'])->name('dashboard_todos');
