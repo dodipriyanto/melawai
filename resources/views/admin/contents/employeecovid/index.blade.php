@@ -2,10 +2,11 @@
 * @author Dodi Priyanto<dodi.priyanto76@gmail.com>
 */
 @extends('admin.layouts.main')
-@section('title', 'EmployeeFamily')
+<link rel="stylesheet" type="text/css" href="{{asset('lib/flatpickr/css/flatpickr.min.css')}}">
+
+@section('title', 'EmployeeCovid')
 
 @section('stylesheet')
-    <link rel="stylesheet" type="text/css" href="{{asset('lib/flatpickr/css/flatpickr.min.css')}}">
 
 @endsection
 
@@ -18,7 +19,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>EmployeeFamily Table</h5>
+                    <h5>EmployeeCovid Table</h5>
 
                 </div>
                 <div class="card-block">
@@ -34,12 +35,8 @@
                                        <tr class="table100-head">
                                            <th width="3%" class="text-center">No</th>
                                            <th>Pegawai</th>
-                                           <th>Nama</th>
-                                           <th>Status Keluarga</th>
-                                           <th>Umur</th>
-                                           <th>Tempat Lahir</th>
-                                           <th>Tanggal Lahir</th>
-                                           <th>Nomor Telpon</th>
+                                           <th>Tanggal Terjangkit</th>
+                                           <th>Tanggal Sembuh</th>
                                            
                                            <th class="text-center">Action</th>
                                        </tr>
@@ -56,7 +53,7 @@
 
 
     </div>
-     @include('admin.contents.employeefamily._modal')
+     @include('admin.contents.employeecovid._modal')
 
 @endsection
 
@@ -65,25 +62,24 @@
 
     <script type="text/javascript">
         var url = {
-            detail : "{{route('dashboard_employeefamilies_detail')}}",
-            delete : "{{route('dashboard_employeefamilies_delete')}}",
-            submit : "{{route('dashboard_employeefamilies_post')}}",
-            table : "{{route('dashboard_employeefamilies_table')}}"
+            detail : "{{route('dashboard_employeecovids_detail')}}",
+            delete : "{{route('dashboard_employeecovids_delete')}}",
+            submit : "{{route('dashboard_employeecovids_post')}}",
+            table : "{{route('dashboard_employeecovids_table')}}"
         };
         var table;
 
 
         $(document).ready(function () {
-            var CSRF_TOKEN = "{{@csrf_token()}}";
             $(".dpicker").flatpickr({enableTime: false, dateFormat: "Y-m-d"});
 
+            var CSRF_TOKEN = "{{@csrf_token()}}";
             table = $('#contentTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: url.table,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', title: '#', width: '2%'},
-
                     {
                         data: 'employee', name: 'employee',
                         "render": function (data) {
@@ -91,12 +87,8 @@
                             return `<div class="badge ">(${data.nik}) - ${data.nama}</div>`;
                         }
                     },
-                    {data: 'nama', name: 'nama'},
-                    {data: 'status_keluarga', name: 'status_keluarga'},
-                    {data: 'umur', name: 'umur'},
-                    {data: 'tempat_lahir', name: 'tempat_lahir'},
-                    {data: 'tanggal_lahir', name: 'tanggal_lahir'},
-                    {data: 'nomor_telpon', name: 'nomor_telpon'},
+                    {data: 'tanggal_terjangkit', name: 'tanggal_terjangkit'},
+                    {data: 'tanggal_sembuh', name: 'tanggal_sembuh'},
                     
                     {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center',width: '15%'},
                 ]
@@ -111,12 +103,8 @@
 
                     let response = result.data;
                     $('#pegawai').val(response.employee.id).trigger('change')
-                    $('#status_keluarga').val(response.status_keluarga)
-                    $('#nama').val(response.nama)
-                    $('#umur').val(response.umur)
-                    $('#tempat_lahir').val(response.tempat_lahir)
-                    $('#tanggal_lahir').val(response.tanggal_lahir)
-                    $('#nomor_telpon').val(response.nomor_telpon)
+                    $('#tanggal_terjangkit').val(response.tanggal_terjangkit)
+                    $('#tanggal_sembuh').val(response.tanggal_sembuh)
                     
 
                 });
@@ -132,15 +120,9 @@
                 $.get(url.detail,{id : id}, function (result){
                     let response = result.data;
                     $('#id').val(response.id)
-                    $('#type').val(response.type).trigger('change')
-
                     $('#pegawai').val(response.employee.id).trigger('change')
-                    $('#status_keluarga').val(response.status_keluarga)
-                    $('#nama').val(response.nama)
-                    $('#umur').val(response.umur)
-                    $('#tempat_lahir').val(response.tempat_lahir)
-                    $('#tanggal_lahir').val(response.tanggal_lahir)
-                    $('#nomor_telpon').val(response.nomor_telpon)
+                    $('#tanggal_terjangkit').val(response.tanggal_terjangkit)
+                    $('#tanggal_sembuh').val(response.tanggal_sembuh)
                     
 
                 });
@@ -188,24 +170,10 @@
                     pegawai_id: {
                         required: true,
                     },
-                    status_keluarga: {
+                    tanggal_terjangkit: {
                         required: true,
                     },
-                    nama: {
-                        required: true,
-                    },
-                    umur: {
-                        required: true,
-                    },
-                    tempat_lahir: {
-                        required: true,
-                    },
-                    tanggal_lahir: {
-                        required: true,
-                    },
-                    nomor_telpon: {
-                        required: true,
-                    },
+
                     
 
                 },
