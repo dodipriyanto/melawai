@@ -16,7 +16,7 @@
                 <fieldset class="form-group floating-label-form-group">
                     <label for="group">Pegawai</label>
                     <div class="controls">
-                        <select class="js-example-basic-single form-control" id="pegawai" name="pegawai_id" style="padding:10px !important;">
+                        <select class="js-example-basic-single form-control" id="pegawai" name="pegawai_id" style="padding:10px !important;" disabled>
                             <option value="">-- PILIH PEGAWAI --</option>
 
                             @foreach($employee as $item)

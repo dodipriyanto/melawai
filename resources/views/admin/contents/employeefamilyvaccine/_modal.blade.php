@@ -13,36 +13,65 @@
                 @csrf
                 <input type="hidden" name="id" id="id" class="id">
 
+                <fieldset class="form-group floating-label-form-group">
+                    <label for="group">Pegawai</label>
+                    <div class="controls">
+                        <select class="js-example-basic-single form-control" id="pegawai" name="pegawai_id" style="padding:10px !important;" aria-readonly="true" disabled>
+                            <option value="">-- PILIH PEGAWAI --</option>
+
+                            @foreach($employee as $item)
+                                <option value="{{$item->id}}">({{$item->nik}}) - {{$item->nama}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group floating-label-form-group">
+                    <label for="group">Keluarga</label>
+                    <div class="controls">
+                        <select class="js-example-basic-single form-control" id="keluarga" name="keluarga_id" style="padding:10px !important;" disabled>
+                            <option value="">-- PILIH KELUARGA --</option>
+
+                            @foreach($family as $item)
+                                <option value="{{$item->id}}">{{$item->nama}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-group floating-label-form-group">
+                    <label for="group">Vaksin</label>
+                    <div class="controls">
+                        <select class="js-example-basic-single form-control" id="vaksin" name="vaksin_id" style="padding:10px !important;">
+                            <option value="">-- PILIH VAKSIN --</option>
+                            @foreach($vaccine as $item)
+                                <option value="{{$item->id}}">{{$item->nama}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </fieldset>
+
+
                 <fieldset class='form-group floating-label-form-group'>
-                    <label for='pegawai_id'>Pegawai_id</label>
+                    <label for='dosis'>Dosis Ke</label>
                     <div class='controls'>
-                        <input type='text' class='form-control' id='pegawai_id' name='pegawai_id'
-                               placeholder='Pegawai_id' required
-                               data-validation-required-message='This field is required'>
-                    </div>
-                </fieldset>
-                 <fieldset class='form-group floating-label-form-group'>
-                    <label for='vaksin_id'>Vaksin_id</label>
-                    <div class='controls'>
-                        <input type='text' class='form-control' id='vaksin_id' name='vaksin_id'
-                               placeholder='Vaksin_id' required
-                               data-validation-required-message='This field is required'>
-                    </div>
-                </fieldset>
-                 <fieldset class='form-group floating-label-form-group'>
-                    <label for='dosis'>Dosis</label>
-                    <div class='controls'>
-                        <input type='text' class='form-control' id='dosis' name='dosis'
+                        <input type='text' class='form-control number-only' id='dosis' name='dosis'
                                placeholder='Dosis' required
                                data-validation-required-message='This field is required'>
                     </div>
                 </fieldset>
-                 <fieldset class='form-group floating-label-form-group'>
-                    <label for='tanggal_vaksin'>Tanggal_vaksin</label>
+                <fieldset class='form-group floating-label-form-group'>
+                    <label for='tanggal_vaksin'>Tanggal Vaksin</label>
                     <div class='controls'>
-                        <input type='text' class='form-control' id='tanggal_vaksin' name='tanggal_vaksin'
-                               placeholder='Tanggal_vaksin' required
-                               data-validation-required-message='This field is required'>
+                        {{--                        <input type='text' class='form-control' id='tanggal_vaksin' name='tanggal_vaksin'--}}
+                        {{--                               placeholder='Tanggal Vaksin' required--}}
+                        {{--                               data-validation-required-message='This field is required'>--}}
+                        <div class="input-group mb-3">
+                            <input type="datetime-local" id="tanggal_vaksin" name="tanggal_vaksin" class="form-control dpicker" placeholder="Tanggal Vaksin" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2"><i class="feather icon-calendar" ></i></span>
+                            </div>
+                        </div>
                     </div>
                 </fieldset>
                  

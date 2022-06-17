@@ -51,23 +51,28 @@ class EmployeeFamilyVaccineService extends CoreService
 
     public function loadDataTable($access)
     {
-        $model = EmployeeFamilyVaccine::withoutTrashed()->with(['employee','family'])->get();
+        $model = EmployeeFamilyVaccine::withoutTrashed()->with(['family.employee','vaccine'])->get();
+//        dd($model);
         return $this->privilageBtnDatatable($model, $access);
     }
 
     public function saveEmployeFamilyVaccine($employeeFamily)
     {
-        $arrData = [
-            'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
-            'pegawai_id' => $employeeFamily->pegawai_id,
-            'keluarga_id' => $employeeFamily->id,
-            'dosis' => null,
-            'tanggal_vaksin' => null
-        ];
-//        dd($arrData);
 
 
-        $employeeVaccine = $this->employeeFamilyvaccineRepository->save($arrData, false, true);
-
+        //2 dosis vaccine for every employee family data
+        for ($i=0; $i <= 1; $i ++)
+        {
+            $ep = $this->employeeFamilyvaccineRepository->save(
+                [
+                    'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+                    'pegawai_id' => $employeeFamily->id,
+                    'keluarga_id' => $employeeFamily->id,
+                    'vaksin_id' => null,
+                    'dosis' => null,
+                    'tanggal_vaksin' => null
+                ], false, true);
+//            dump($ep);
+        }
     }
 }

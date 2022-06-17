@@ -14,6 +14,8 @@ use App\Http\Controllers\CoreController;
 use App\Repository\Generator\EmployeeFamilyVaccineRepository;
 use App\Service\Generator\EmployeeFamilyVaccineService;
 use App\Service\Generator\VaccineService;
+use App\Service\Generator\EmployeeService;
+use App\Service\Generator\EmployeeFamilyService;
 
 
 class EmployeeFamilyVaccineController extends CoreController
@@ -23,14 +25,19 @@ class EmployeeFamilyVaccineController extends CoreController
     protected $employeefamilyvaccineRepository;
     protected $employeefamilyvaccineService;
     protected $vaccineService;
+    protected $employeeService;
+    protected $employeeFamilyService;
 
     public function __construct(EmployeeFamilyVaccineRepository $employeefamilyvaccineRepository, EmployeeFamilyVaccineService $employeefamilyvaccineService,
-    VaccineService $vaccineService)
+    VaccineService $vaccineService, EmployeeService $employeeService, EmployeeFamilyService $employeeFamilyService)
     {
         $this->menu = $this->get_menu();
         $this->employeefamilyvaccineRepository = $employeefamilyvaccineRepository;
         $this->employeefamilyvaccineService = $employeefamilyvaccineService;
         $this->vaccineService = $vaccineService;
+        $this->employeeService = $employeeService;
+        $this->employeeFamilyService = $employeeFamilyService;
+
         $this->settingVal = $this->get_all_setting();
     }
 
@@ -45,6 +52,8 @@ class EmployeeFamilyVaccineController extends CoreController
 //        dd($this->vaccineService->all());
         return view('admin.contents.employeefamilyvaccine.index',[
             'vaccine' => $this->vaccineService->all(),
+            'employee' => $this->employeeService->all(),
+            'family' => $this->employeeFamilyService->all(),
             'menu' => ($this->menu ? $this->menu : ''),
             'setting' => ( $this->settingVal ? $this->settingVal : '')
         ]);
@@ -88,7 +97,7 @@ class EmployeeFamilyVaccineController extends CoreController
     public function get(Request $request)
     {
         $id = $request->get('id');
-        $data = $this->employeefamilyvaccineRepository->find($id);
+        $data = $this->employeefamilyvaccineRepository->findWith($id,['vaccine','family.employee']);
 
         return response()->json(['data'=> $data ],200);
     }

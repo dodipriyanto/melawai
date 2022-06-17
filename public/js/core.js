@@ -108,3 +108,8 @@ function formEnable(){
     $("#formModal select").removeAttr("disabled", true);
     $("#formModal button").removeAttr("disabled", true);
 }
+function formEnableCustom(){
+    $("#formModal input").removeAttr("disabled", true);
+    // $("#formModal select").removeAttr("disabled", true);
+    $("#formModal button").removeAttr("disabled", true);
+}

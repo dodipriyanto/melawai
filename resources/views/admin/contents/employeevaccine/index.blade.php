@@ -114,7 +114,6 @@
                 $.get(url.detail, {id : id}, function (result){
 
                     let response = result.data;
-                    console.log(response);
                     $('#pegawai').val(response.employee.id).trigger('change')
                     if(response.vaccine)
                     {
@@ -131,7 +130,7 @@
             $(document).on('click', '.update', function (e) {
                 let id = $(this).data('id');
                 e.preventDefault();
-                formEnable();
+                formEnableCustom();
                 modalShow('myModal','Update Data');
 
                 $.get(url.detail,{id : id}, function (result){

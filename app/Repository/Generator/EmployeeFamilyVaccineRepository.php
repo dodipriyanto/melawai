@@ -21,7 +21,7 @@ class EmployeeFamilyVaccineRepository extends CoreRepository
 
     public function findWith($id, $relation)
     {
-        return $this->employeefamilyvaccine->with("$relation")->find($id);
+        return $this->employeefamilyvaccine->with($relation)->find($id);
     }
 
     public function get_all(){
