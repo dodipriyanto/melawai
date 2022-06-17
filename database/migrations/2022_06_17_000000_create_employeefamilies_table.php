@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeesTable extends Migration
+class CreateEmployeeFamiliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,20 +16,18 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-         Schema::create( 'tbl_employee', function (Blueprint $table) {
+         Schema::create( 'tbl_employeefamily', function (Blueprint $table) {
                 $table->uuid('id');
                 $table->primary('id');
 
-                $table->string("nik");
+                $table->uuid('pegawai_id')->nullable(true);
+                $table->string("status_keluarga");
                 $table->string("nama");
                 $table->integer("umur");
-                $table->text("alamat");
-                $table->string("nomor_telpon");
-                $table->date("tanggal_lahir");
                 $table->string("tempat_lahir");
-                $table->integer("is_have_family")->default(0);
-                $table->text("file_upload");
-
+                $table->date("tanggal_lahir");
+                $table->string("nomor_telpon");
+                
 
                 $table->softDeletes();
                 $table->timestamps();

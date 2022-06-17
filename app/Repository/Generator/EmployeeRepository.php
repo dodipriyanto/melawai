@@ -25,13 +25,18 @@ class EmployeeRepository extends CoreRepository
     }
 
     public function get_all(){
-        return $this->employee->withTrashed()->get();
+        return $this->employee->withoutTrashed()->get();
     }
 
     public function dataTable($access)
     {
         $data = new EmployeeService($this);
         return $data->loadDataTable($access);
+    }
+
+    public function get_employe_family()
+    {
+        return $this->employee->withoutTrashed()->where('is_have_family',1)->get();
     }
 
 }

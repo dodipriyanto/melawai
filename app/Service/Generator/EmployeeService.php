@@ -42,6 +42,11 @@ class EmployeeService extends CoreService
         return 0;
     }
 
+    public function getEmployeHasFamily()
+    {
+        return $this->employeeRepository->get_employe_family();
+    }
+
     public function all()
     {
         return $this->employeeRepository->all();

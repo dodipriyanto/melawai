@@ -12,30 +12,29 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use DigitalCloud\Blameable\Traits\Blameable;
 
 
-class Employee extends Model
+class EmployeeFamily extends Model
 {
     use HasFactory, SoftDeletes, Uuid, Blameable;
 
     protected $keyType = 'string';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $table = 'tbl_employee';
+    protected $table = 'tbl_employeefamily';
 
     protected $fillable = [
         'id',
-        'nik',
-        'nama',
-        'umur',
-        'alamat', 
-        'nomor_telpon', 
-        'tanggal_lahir', 
+        'pegawai_id', 
+        'status_keluarga', 
+        'nama', 
+        'umur', 
         'tempat_lahir', 
-        'is_have_family',
-        'file_upload'
+        'tanggal_lahir', 
+        'nomor_telpon', 
+        
     ];
 
-    function employeFamily()
+    function Employee()
     {
-        return $this->hasMany(EmployeeFamily::class,'pegawai_id', 'id');
+        return $this->belongsTo(Employee::class,'pegawai_id','id');
     }
 }
