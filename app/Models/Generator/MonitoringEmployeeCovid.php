@@ -12,32 +12,34 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 use DigitalCloud\Blameable\Traits\Blameable;
 
 
-class EmployeeVaccine extends Model
+class MonitoringEmployeeCovid extends Model
 {
     use HasFactory, SoftDeletes, Uuid, Blameable;
 
     protected $keyType = 'string';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $table = 'tbl_employeevaccine';
+    protected $table = 'tbl_monitoringemployeecovid';
 
     protected $fillable = [
         'id',
-        'pegawai_id', 
-        'vaksin_id', 
-        'dosis', 
-        'tanggal_vaksin', 
+        'employe_covid_id', 
+        'tanggal_pengecekan', 
+        'metode_pengecekan_id', 
+        'nilai', 
         
     ];
 
-    function employee()
+
+    function employee_covid()
     {
-        return $this->belongsTo(Employee::class,'pegawai_id','id');
+        return $this->belongsTo(EmployeeCovid::class,'employe_covid_id','id');
     }
 
-    function vaccine()
+    function monitoring()
     {
-        return $this->belongsTo(Vaccine::class,'vaksin_id','id');
+        return $this->belongsTo(MonitoringCovid::class,'metode_pengecekan_id','id');
     }
+
 
 }

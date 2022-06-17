@@ -6,18 +6,18 @@
 namespace App\Service\Generator;
 
 
-use App\Models\Generator\EmployeeCovid;
-use App\Repository\Generator\EmployeeCovidRepository;
+use App\Models\Generator\MonitoringEmployeeCovid;
+use App\Repository\Generator\MonitoringEmployeeCovidRepository;
 use Illuminate\Support\Facades\Validator;
 use App\Service\CoreService;
 
-class EmployeeCovidService extends CoreService
+class MonitoringEmployeeCovidService extends CoreService
 {
-    protected $employeecovidRepository;
+    protected $monitoringemployeecovidRepository;
 
-    public function __construct(EmployeeCovidRepository $employeecovidRepository)
+    public function __construct(MonitoringEmployeeCovidRepository $monitoringemployeecovidRepository)
     {
-        $this->employeecovidRepository = $employeecovidRepository;
+        $this->monitoringemployeecovidRepository = $monitoringemployeecovidRepository;
     }
 
     public function formValidate($request)
@@ -39,19 +39,18 @@ class EmployeeCovidService extends CoreService
         return 0;
     }
 
-    public function all($relation = null)
+    public function all()
     {
-        if ($relation) return $this->employeecovidRepository->get_all($relation);
-        return $this->employeecovidRepository->all();
+        return $this->monitoringemployeecovidRepository->all();
     }
 
     public function find($id, $relation = null)
     {
-        return $this->employeecovidRepository->find($id, $relation);
+        return $this->monitoringemployeecovidRepository->find($id, $relation);
     }
 
     public function loadDataTable($access){
-        $model = EmployeeCovid::withoutTrashed()->with('employee')->get();
+        $model = MonitoringEmployeeCovid::withoutTrashed()->with(['employee_covid.employee','monitoring'])->get();
         return $this->privilageBtnDatatable($model, $access);
     }
 }

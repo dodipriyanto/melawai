@@ -24,8 +24,8 @@ class EmployeeCovidRepository extends CoreRepository
         return $this->employeecovid->with("$relation")->find($id);
     }
 
-    public function get_all(){
-        return $this->employeecovid->withTrashed()->get();
+    public function get_all($relation){
+        return $this->employeecovid->withTrashed()->with($relation)->get();
     }
 
     public function dataTable($access)
