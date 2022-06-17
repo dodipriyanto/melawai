@@ -23,8 +23,9 @@ class Employee extends Model
 
     protected $fillable = [
         'id',
-        'nama', 
-        'umur', 
+        'nik',
+        'nama',
+        'umur',
         'alamat', 
         'nomor_telpon', 
         'tanggal_lahir', 

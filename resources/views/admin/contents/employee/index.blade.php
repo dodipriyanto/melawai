@@ -55,6 +55,7 @@
                                        <thead>
                                        <tr class="table100-head">
                                            <th width="3%" class="text-center">No</th>
+                                           <th>NIK</th>
                                            <th>Nama</th>
                                            <th>Umur</th>
                                            <th>Alamat</th>
@@ -109,6 +110,7 @@
                 ajax: url.table,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', title: '#', width: '2%'},
+                    {data: 'nik', name: 'nik'},
                     {data: 'nama', name: 'nama'},
                     {data: 'umur', name: 'umur'},
                     {data: 'alamat', name: 'alamat'},
@@ -154,6 +156,7 @@
 
                     console.log(result)
                     $('#nama').val(response.nama)
+                    $('#nik').val(response.nik)
                     $('#umur').val(response.umur)
                     $('#alamat').val(response.alamat)
                     $('#nomor_telpon').val(response.nomor_telpon)
@@ -176,6 +179,7 @@
                 $.get(url.detail,{id : id}, function (result){
                     let response = result.data;
                     $('#id').val(response.id)
+                    $('#nik').val(response.nik)
                     $('#nama').val(response.nama)
                     $('#umur').val(response.umur)
                     $('#alamat').val(response.alamat)
@@ -247,6 +251,9 @@
                         required: true,
                     },
                     is_have_family: {
+                        required: true,
+                    },
+                    nik: {
                         required: true,
                     },
                     

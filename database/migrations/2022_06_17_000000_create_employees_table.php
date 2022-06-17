@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
                 $table->uuid('id');
                 $table->primary('id');
 
+                $table->string("nik");
                 $table->string("nama");
                 $table->integer("umur");
                 $table->text("alamat");

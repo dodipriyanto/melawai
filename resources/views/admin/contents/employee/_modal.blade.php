@@ -16,6 +16,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <fieldset class='form-group floating-label-form-group'>
+                            <label for='nama'>NIK</label>
+                            <div class='controls'>
+                                <input type='text' class='form-control' id='nik' name='nik'
+                                       placeholder='NIK' required
+                                       data-validation-required-message='This field is required'>
+                            </div>
+                        </fieldset>
+                        <fieldset class='form-group floating-label-form-group'>
                             <label for='nama'>Nama</label>
                             <div class='controls'>
                                 <input type='text' class='form-control' id='nama' name='nama'
