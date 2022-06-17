@@ -74,10 +74,7 @@ class EmployeeController extends CoreController
         {
             //Store Data Employee to Employee Vaccine
             $this->employeeVaccineService->saveEmployeVaccine($employee);
-
         }
-
-
         return response()->json([
             'status'=> 'success',
             'message' => "Data is successfully  " . (is_object($employee) == true ? 'added' : 'updated')

@@ -14,6 +14,7 @@ use App\Http\Controllers\CoreController;
 
 use App\Repository\Generator\EmployeeFamilyRepository;
 use App\Service\Generator\EmployeeFamilyService;
+use App\Service\Generator\EmployeeFamilyVaccineService;
 
 
 class EmployeeFamilyController extends CoreController
@@ -22,16 +23,21 @@ class EmployeeFamilyController extends CoreController
     private $settingVal;
     protected $employeefamilyRepository;
     protected $employeefamilyService;
+    protected $employeeFamilyVaccineService;
 
     protected $employeeService;
 
-    public function __construct(EmployeeFamilyRepository $employeefamilyRepository, EmployeeFamilyService $employeefamilyService,
-                                EmployeeService $employeeService)
+    public function __construct(EmployeeFamilyRepository $employeefamilyRepository, EmployeeFamilyService $employeeFamilyService,
+                                EmployeeService $employeeService, EmployeeFamilyVaccineService $employeeFamilyVaccineService
+                                //,EmployeeFamilyVaccineService $employeeFamilyVaccineService
+                                )
     {
         $this->menu = $this->get_menu();
         $this->employeefamilyRepository = $employeefamilyRepository;
-        $this->employeefamilyService = $employeefamilyService;
+        $this->employeefamilyService = $employeeFamilyService;
         $this->employeeService = $employeeService;
+        $this->employeeFamilyVaccineService = $employeeFamilyVaccineService;
+//        $this->employeeFamilyVaccineService = $employeeFamilyVaccineService;
         $this->settingVal = $this->get_all_setting();
     }
 
@@ -68,6 +74,12 @@ class EmployeeFamilyController extends CoreController
         }
         $input = $request->all();
         $employeefamily = $this->employeefamilyRepository->save($input);
+        //if new employee family , not update data
+        if (is_object($employeefamily))
+        {
+            //Store Data Employee Family to Employee Family Vaccine
+            $this->employeeFamilyVaccineService->saveEmployeFamilyVaccine($employeefamily);
+        }
 
         return response()->json([
             'status'=> 'success',

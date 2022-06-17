@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Generator\EmployeeFamilyVaccineController;
 use App\Http\Controllers\Generator\MonitoringCovidController;
 use App\Http\Controllers\Generator\VaccineController;
 use App\Http\Controllers\Generator\EmployeeVaccineController;
@@ -37,6 +38,14 @@ Route::group(['prefix'=>'administrator','middleware'=>['auth','roles']], functio
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/delete_file', [DashboardController::class, 'deleteFileContent'])->name('file_delete');
 
+
+    Route::group(['prefix'=>'employeefamilyvaccines'], function () {
+        Route::get('/', [EmployeeFamilyVaccineController::class, 'index'])->name('dashboard_employeefamilyvaccines');
+        Route::get('/get', [EmployeeFamilyVaccineController::class, 'get'])->name('dashboard_employeefamilyvaccines_detail');
+        Route::get('/delete', [EmployeeFamilyVaccineController::class, 'destroy'])->name('dashboard_employeefamilyvaccines_delete');
+        Route::post('/', [EmployeeFamilyVaccineController::class, 'store'])->name('dashboard_employeefamilyvaccines_post');
+        Route::get('/datatable.json', [EmployeeFamilyVaccineController::class ,'__datatable'])->name('dashboard_employeefamilyvaccines_table');
+    });
 
     Route::group(['prefix'=>'monitoringcovids'], function () {
         Route::get('/', [MonitoringCovidController::class, 'index'])->name('dashboard_monitoringcovids');
