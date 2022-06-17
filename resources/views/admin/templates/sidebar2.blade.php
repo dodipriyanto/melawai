@@ -39,7 +39,7 @@
 
                                     @if($value->childs->isEmpty())
                                         <li data-username="{{$value->name}}" class="nav-item {{($value->name == $activeMenu->name ? 'active' : '')}}">
-                                            <a href="{{route("$value->route_name")}}" class="nav-link">
+                                            <a href="{{$value->route_name ? route("$value->route_name") : '#'}}" class="nav-link">
                                                 <span class="pcoded-micon">
                                                     <i class="{{$value->icon}}"></i>
                                                 </span>
