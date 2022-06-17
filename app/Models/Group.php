@@ -14,6 +14,7 @@ class Group extends Model
 {
     use HasFactory, SoftDeletes, Uuid, Blameable;
 
+    protected $keyType = 'string';
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $table = 'conf_group';

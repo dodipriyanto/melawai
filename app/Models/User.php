@@ -20,6 +20,7 @@ class User extends Authenticatable
     use Uuid;
     use Blameable;
 
+    protected $keyType = 'string';
     protected $table = 'conf_users';
     protected $primaryKey = 'id';
     public $incrementing = false;

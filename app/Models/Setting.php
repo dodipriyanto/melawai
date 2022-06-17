@@ -13,6 +13,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Uuid;
 class Setting extends Model
 {
     use HasFactory, SoftDeletes, Uuid, Blameable;
+    protected $keyType = 'string';
 
     protected $primaryKey = 'id';
     public $incrementing = false;
